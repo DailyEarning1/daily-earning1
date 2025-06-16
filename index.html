@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Earning - Government Approved</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .highlight {
+      text-align: center;
+      font-size: 1.2em;
+      color: green;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .course-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .price {
+      font-size: 1.5em;
+      color: #007bff;
+    }
+    .info {
+      margin: 10px 0;
+    }
+    .buy-button {
+      background: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .referral {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 8px;
+    }
+    #qrPopup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .popup-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .popup-box img {
+      width: 250px;
+      height: auto;
+      margin-bottom: 15px;
+    }
+    .popup-box input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔥 Daily Earning</h1>
+  <div class="highlight">✅ Government Approved Website</div>
+  <div class="course-container" id="courses"></div>
+
+  <div id="qrPopup">
+    <div class="popup-box">
+      <h3>Payment Section</h3>
+      <img src="qr.png" alt="Scan QR Code to Pay" />
+      <p><b>Pay via UPI to receive your course access</b></p>
+      <button onclick="showTransactionInput()">Done</button>
+      <div id="txnBox" style="display:none;">
+        <input type="text" id="txnId" placeholder="Enter Transaction ID" />
+        <button onclick="submitTxn()">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const courseData = [
+      { price: 150, dailyWithout: 90, dailyWith: 180 },
+      { price: 199, dailyWithout: 120, dailyWith: 240 },
+      { price: 299, dailyWithout: 180, dailyWith: 360 },
+      { price: 399, dailyWithout: 240, dailyWith: 480 },
+      { price: 499, dailyWithout: 300, dailyWith: 600 },
+      { price: 999, dailyWithout: 600, dailyWith: 1200 },
+      { price: 1999, dailyWithout: 1200, dailyWith: 2400 },
+      { price: 2999, dailyWithout: 1800, dailyWith: 3600 },
+      { price: 3999, dailyWithout: 2400, dailyWith: 4800 },
+      { price: 4999, dailyWithout: 3000, dailyWith: 6000 },
+      { price: 9999, dailyWithout: 6000, dailyWith: 12000 },
+    ];
+
+    const coursesDiv = document.getElementById("courses");
+    courseData.forEach(course => {
+      const div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = `
+        <div class="price">₹${course.price} Course</div>
+        <div class="info">Daily ₹${course.dailyWithout} without work<br>Daily ₹${course.dailyWith} with work</div>
+        <button class="buy-button" onclick="showQR()">Buy Now</button>
+        <div class="referral">Earn 40% by sharing this course</div>
+      `;
+      coursesDiv.appendChild(div);
+    });
+
+    function showQR() {
+      document.getElementById("qrPopup").style.display = "flex";
+    }
+
+    function showTransactionInput() {
+      document.getElementById("txnBox").style.display = "block";
+    }
+
+    function submitTxn() {
+      const id = document.getElementById("txnId").value;
+      if (!id) {
+        alert("Please enter a valid Transaction ID");
+        return;
+      }
+      // Send email simulation here (on real host, backend needed)
+      alert("Transaction ID submitted. Please wait 5 minutes...");
+      setTimeout(() => {
+        window.open("https://youtube.com/playlist?list=PLE0okpeHKm_me8UVEL0elad-7rfc_gNVp", "_blank");
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
